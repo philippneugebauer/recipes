@@ -10,7 +10,12 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body role="main" class="ms-3 mt-2 mb-2 me-3">
+
+    <% if notice %>
+      <div class="alert alert-success"><%= notice %></div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
