@@ -1,4 +1,4 @@
-<h1> View Recipes
+<h1><%= recipe.title %>
   <%= link_to "Edit", edit_recipe_path(@recipe), class: "btn btn-outline-warning" %> |
   <%= button_to "Delete", @recipe, method: :delete, class: "btn btn-outline-danger" %>
   <span class="float-right">
@@ -8,10 +8,6 @@
 
 <div class="table-responsive">
   <table class="table mt-3" aria-label="table for Recipes">
-    <tr>
-      <td>Title</td>
-      <td><%= recipe.title %></td>
-    </tr>
     <tr>
       <td>Cook time</td>
       <td><%= recipe.cook_time %></td>
@@ -29,8 +25,7 @@
       <td><%= recipe.author %></td>
     </tr>
     <tr>
-      <td>Image url</td>
-      <td><%= recipe.image_url %></td>
+      <td colspan="2"><%= image_tag recipe.image_url, class: "img-thumbnail", alt: "Image of cooked #{recipe.title}" %></td>
     </tr>
   </table>
 </div>
