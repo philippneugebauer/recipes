@@ -1,0 +1,36 @@
+<h1> View Recipes
+  <%= link_to "Edit", edit_recipe_path(@recipe), class: "btn btn-outline-warning" %> |
+  <%= button_to "Delete", @recipe, method: :delete, class: "btn btn-outline-danger" %>
+  <span class="float-right">
+    <%= link_to "Back to recipes", recipes_path, class: "btn btn-outline-secondary" %>
+  </span>
+</h1>
+
+<div class="table-responsive">
+  <table class="table mt-3" aria-label="table for Recipes">
+    <tr>
+      <td>Title</td>
+      <td><%= recipe.title %></td>
+    </tr>
+    <tr>
+      <td>Cook time</td>
+      <td><%= recipe.cook_time %></td>
+    </tr>
+    <tr>
+      <td>Prep time</td>
+      <td><%= recipe.prep_time %></td>
+    </tr>
+    <tr>
+      <td>Ratings</td>
+      <td><%= recipe.ratings %></td>
+    </tr>
+    <tr>
+      <td>Author</td>
+      <td><%= recipe.author %></td>
+    </tr>
+    <tr>
+      <td>Image url</td>
+      <td><%= recipe.image_url %></td>
+    </tr>
+  </table>
+</div>

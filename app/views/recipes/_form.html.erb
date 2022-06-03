@@ -1,0 +1,47 @@
+<%= form_with(model: recipe) do |form| %>
+  <% if recipe.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+
+      <ul>
+        <% recipe.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :cook_time, class: "form-label" %>
+    <%= form.number_field :cook_time, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :prep_time, class: "form-label" %>
+    <%= form.number_field :prep_time, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :ratings, class: "form-label" %>
+    <%= form.text_field :ratings, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :author, class: "form-label" %>
+    <%= form.text_field :author, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :image_url, class: "form-label" %>
+    <%= form.text_field :image_url, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.submit, class: "btn btn-primary" %>
+  </div>
+<% end %>
