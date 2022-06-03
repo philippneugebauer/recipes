@@ -1,0 +1,12 @@
+"title": string
+"cook_time": string
+"prep_time": string
+"ingredients": array
+"ratings": number
+"cuisine": always empty string
+"category": string
+"author": string
+"image": string/url
+
+
+"1 cup almond flour".split("cup").map{|s| s.strip()} => füge split part zu [0] hinzu
