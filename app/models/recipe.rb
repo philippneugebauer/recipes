@@ -4,6 +4,8 @@ class Recipe < ApplicationRecord
   validates :ratings, numericality: true
   validate :valid_image_url
 
+  belongs_to :category
+
   def valid_image_url
     errors.add(:image_url, "must be a valid url") unless (URI.parse image_url rescue nil)
   end
