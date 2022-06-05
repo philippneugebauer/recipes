@@ -41,6 +41,11 @@
     <%= form.text_field :image_url, class: "form-control" %>
   </div>
 
+  <div class="mb-3">
+    <%= form.label :category_id, class: "form-label" %>
+    <%= form.select :category_id, Categories.all.map{|c| [c.name, c.id]} class: "form-control" %>
+  </div>
+
   <div>
     <%= form.submit, class: "btn btn-primary" %>
   </div>
