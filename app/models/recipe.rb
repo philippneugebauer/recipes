@@ -4,6 +4,7 @@ class Recipe < ApplicationRecord
   validates :ratings, numericality: true
   validate :valid_image_url
 
+  has_many :ingredient_data, dependent: :delete_all
   belongs_to :category
 
   def valid_image_url
