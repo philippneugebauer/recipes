@@ -6,7 +6,7 @@
   <%#= form.label :query, "Search for:" %>
   <div class="input-group">
     <%= form.text_field :filter_by_ingredients, name: "filter_by_ingredients", class: "form-control", "aria-label": "ingredient filter input", describedby: "submit-filter" %>
-    <%= form.submit "Propose Recipe", formaction: recipes_propose_url, class: "btn btn-outline-primary", "aria-label": "Propose recipe based on filter" %>
+    <%= form.submit "Propose Recipe", formaction: propose_recipe_url, class: "btn btn-outline-primary", "aria-label": "Propose recipe based on filter" %>
     <%= link_to "Reset", recipes_path, class: "btn btn-outline-primary", "aria-label": "Reset filter" %>
     <%= form.submit "Filter", id: "submit-filter", class: "btn btn-primary", "aria-describedby": "filter-help" %>
   </div>
