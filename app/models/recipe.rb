@@ -1,5 +1,5 @@
 class Recipe < ApplicationRecord
-  validates :title, :cook_time, :prep_time, :ratings, :author, :image_url, presence: true
+  validates :title, :ingredients, presence: true
   validates :cook_time, :prep_time, numericality: { only_integer: true }
   validates :ratings, numericality: true
   validate :valid_image_url
@@ -10,6 +10,8 @@ class Recipe < ApplicationRecord
   # http://www.binarywebpark.com/query-json-data-rails-postgresql/
   # https://blog.saeloun.com/2022/01/04/postgresql-data-types-in-rails.html
   # JSONB > ARRAY because like querying
+
+  #TODO: visualization with cards? https://getbootstrap.com/docs/5.2/components/card/#horizontal
 
   # Recipe.contains_ingredients(["flour", "cornmeal"])
   scope :contains_ingredients, -> (ingredient_list) {
