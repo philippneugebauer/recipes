@@ -1,0 +1,31 @@
+<h1>Upload New Recipes</h1>
+
+<%= form_with(model: @recipe_import) do |form| %>
+  <% if @recipe_import.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(@recipe_import.errors.count, "error") %> prohibited this recipe_import from being saved:</h2>
+
+      <ul>
+        <% @recipe_import.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :file, class: "form-label" %>
+    <%= form.file_field :file, accept: "application/JSON", class: "form-control", "aria-describedby": "upload-help" %>
+    <div id="upload-help" class="form-text">Must be a JSON file</div>
+  </div>
+
+  <div>
+    <%= form.submit "Import", class: "btn btn-primary" %>
+    <%= link_to "Back to recipe imports", recipe_imports_path, class: "btn btn-outline-secondary" %>
+  </div>
+<% end %>
