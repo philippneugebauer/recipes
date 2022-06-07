@@ -1,6 +1,5 @@
-<h1>
-  Recipes
-  <%= link_to "New recipe", new_recipe_path, class: "btn btn-outline-primary" %>
+<h1>Recipes
+  <%= link_to "Upload new recipes", new_recipe_import_path, class: "btn btn-outline-primary" %>
 </h1>
 
 <div class="table-responsive">
@@ -8,28 +7,31 @@
     <thead>
       <tr>
         <th scope="col">Title</th>
+        <th scope="col">Ingredients</th>
         <th scope="col">Cook time</th>
         <th scope="col">Prep time</th>
         <th scope="col">Ratings</th>
         <th scope="col">Author</th>
-        <th scope="col">Image url</th>
-        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
       <% @recipes.each do |recipe| %>
         <tr>
-          <td><%= recipe.title %></td>
+          <td>
+            <%= link_to recipe.title, recipe %>
+            <%#= image_tag recipe.image_url, class: "img-thumbnail", alt: "Cooked #{recipe.title}" if recipe.image_url %>
+          </td>
+          <td>
+            <ul>
+              <% recipe.ingredients.each do |ingredient| %>
+                <li><%= ingredient %></li>
+              <% end %>
+            </ul>
+          </td>
           <td><%= recipe.cook_time %></td>
           <td><%= recipe.prep_time %></td>
           <td><%= recipe.ratings %></td>
           <td><%= recipe.author %></td>
-          <td><%= recipe.image_url %></td>
-          <td>
-            <%= link_to "Show", recipe, class: "btn btn-sm btn-outline-secondary" %>
-            <%= link_to "Edit", edit_recipe_path(@recipe), class: "btn btn-sm btn-outline-warning" %>
-            <%= button_to "Delete", @recipe, method: :delete, data: [confirm: gettext("Are you sure?")], class: "btn btn-sm btn-outline-danger" %>
-          </td>
         </tr>
       <% end %>
     </tbody>
