@@ -12,6 +12,7 @@ class Recipe < ApplicationRecord
   # JSONB > ARRAY because like querying
 
   #TODO: visualization with cards? https://getbootstrap.com/docs/5.2/components/card/#horizontal
+  # TODO: db schema diagram https://stackoverflow.com/questions/3223770/tools-to-generate-database-tables-diagram-with-postgresql
 
   # Recipe.contains_ingredients(["flour", "cornmeal"])
   scope :contains_ingredients, -> (ingredient_list) {
