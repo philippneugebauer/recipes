@@ -1,6 +1,4 @@
-<h1><%= recipe.title %>
-  <%= link_to "Edit", edit_recipe_path(@recipe), class: "btn btn-outline-warning" %> |
-  <%= button_to "Delete", @recipe, method: :delete, class: "btn btn-outline-danger" %>
+<h1><%= @recipe.title %>
   <span class="float-right">
     <%= link_to "Back to recipes", recipes_path, class: "btn btn-outline-secondary" %>
   </span>
@@ -10,22 +8,22 @@
   <table class="table mt-3" aria-label="table for Recipes">
     <tr>
       <td>Cook time</td>
-      <td><%= recipe.cook_time %></td>
+      <td><%= @recipe.cook_time %></td>
     </tr>
     <tr>
       <td>Prep time</td>
-      <td><%= recipe.prep_time %></td>
+      <td><%= @recipe.prep_time %></td>
     </tr>
     <tr>
       <td>Ratings</td>
-      <td><%= recipe.ratings %></td>
+      <td><%= @recipe.ratings %></td>
     </tr>
     <tr>
       <td>Author</td>
-      <td><%= recipe.author %></td>
+      <td><%= @recipe.author %></td>
     </tr>
     <tr>
-      <td colspan="2"><%= image_tag recipe.image_url, class: "img-thumbnail", alt: "Image of cooked #{recipe.title}" %></td>
+      <td colspan="2"><%= image_tag @recipe.image_url, class: "img-thumbnail", alt: "Image of cooked #{@recipe.title}" %></td>
     </tr>
   </table>
 </div>
