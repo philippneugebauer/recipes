@@ -4,26 +4,39 @@
   </span>
 </h1>
 
-<div class="table-responsive">
-  <table class="table mt-3" aria-label="table for Recipes">
-    <tr>
-      <td>Cook time</td>
-      <td><%= @recipe.cook_time %></td>
-    </tr>
-    <tr>
-      <td>Prep time</td>
-      <td><%= @recipe.prep_time %></td>
-    </tr>
-    <tr>
-      <td>Ratings</td>
-      <td><%= @recipe.ratings %></td>
-    </tr>
-    <tr>
-      <td>Author</td>
-      <td><%= @recipe.author %></td>
-    </tr>
-    <tr>
-      <td colspan="2"><%= image_tag @recipe.image_url, class: "img-thumbnail", alt: "Image of cooked #{@recipe.title}" %></td>
-    </tr>
-  </table>
+<div class="row">
+  <div class="col-6">
+    <%= image_tag @recipe.image_url, class: "img-fluid rounded", alt: "Image of cooked #{@recipe.title}" if @recipe.image_url %>
+  </div>
+  <div class="col-6">
+    <div class="table-responsive">
+      <table class="table mt-3" aria-label="table for Recipes">
+        <tr>
+          <td>Ingredients</td>
+          <td>
+            <ul>
+              <% @recipe.ingredients.each do |ingredient| %>
+                <li><%= ingredient %></li>
+              <% end %>
+            </ul>
+          </td>
+        <tr>
+          <td>Cook time</td>
+          <td><%= @recipe.cook_time %></td>
+        </tr>
+        <tr>
+          <td>Prep time</td>
+          <td><%= @recipe.prep_time %></td>
+        </tr>
+        <tr>
+          <td>Ratings</td>
+          <td><%= @recipe.ratings %></td>
+        </tr>
+        <tr>
+          <td>Author</td>
+          <td><%= @recipe.author %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </div>
