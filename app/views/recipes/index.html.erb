@@ -2,6 +2,16 @@
   <%= link_to "Upload new recipes", new_recipe_import_path, class: "btn btn-outline-primary" %>
 </h1>
 
+<%= form_with url: "/", method: :get, class: "mt-4" do |form| %>
+  <%#= form.label :query, "Search for:" %>
+  <div class="input-group">
+    <%= form.text_field :filter_by_ingredients, name: "filter_by_ingredients", class: "form-control", "aria-label": "ingredient filter input", describedby: "submit-filter" %>
+    <%= link_to "Reset", recipes_path, class: "btn btn-outline-primary", "aria-label": "Reset filter" %>
+    <%= form.submit "Filter", id: "submit-filter", class: "btn btn-primary", "aria-describedby": "filter-help" %>
+  </div>
+  <div id="filter-help" class="form-text">Filter multiple necessary ingredients: "Corn, Flour"</div>
+<% end %>
+
 <div class="table-responsive">
   <table class="table table-hover" aria-label="table for Recipes">
     <thead>

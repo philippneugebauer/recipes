@@ -1,9 +1,14 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[ show edit update destroy ]
+  before_action :set_recipe, only: %i[ show ]
 
   # GET /recipes or /recipes.json
   def index
-    @recipes = Recipe.all
+    if params[:filter_by_ingredients]
+      ingredients = params[:filter_by_ingredients].split(",").map {|i| i.strip().downcase().singularize() }
+      @recipes = Recipe.contains_ingredients(ingredients)
+    else
+      @recipes = Recipe.all
+    end
   end
 
   # GET /recipes/1 or /recipes/1.json
