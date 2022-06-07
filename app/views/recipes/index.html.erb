@@ -13,38 +13,44 @@
   <div id="filter-help" class="form-text">Filter multiple necessary ingredients: "Corn, Flour"</div>
 <% end %>
 
-<div class="table-responsive">
-  <table class="table table-hover" aria-label="table for Recipes">
-    <thead>
-      <tr>
-        <th scope="col">Title</th>
-        <th scope="col">Ingredients</th>
-        <th scope="col">Cook time</th>
-        <th scope="col">Prep time</th>
-        <th scope="col">Ratings</th>
-        <th scope="col">Author</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @recipes.each do |recipe| %>
-        <tr>
-          <td>
-            <%= link_to recipe.title, recipe %>
-            <%#= image_tag recipe.image_url, class: "img-thumbnail", alt: "Cooked #{recipe.title}" if recipe.image_url %>
-          </td>
-          <td>
-            <ul>
-              <% recipe.ingredients.each do |ingredient| %>
-                <li><%= ingredient %></li>
-              <% end %>
-            </ul>
-          </td>
-          <td><%= recipe.cook_time %></td>
-          <td><%= recipe.prep_time %></td>
-          <td><%= recipe.ratings %></td>
-          <td><%= recipe.author %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+<% @recipes.each do |recipe| %>
+  <div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-4 card-body">
+        <%= image_tag recipe.image_url, class: "rounded float-end", style: "height: 200px", alt: "Cooked #{recipe.title}" if recipe.image_url %>
+        <div class="card-img-overlay">
+          <h2 class="card-title h5">
+            <%= link_to recipe.title, recipe, "aria-label": "title with link to recipe details" %>
+          </h2>
+        </div>
+      </div>
+      <div class="col-md-4 border-start my-card-border-color card-body">
+        <table class="table table-borderless" aria-label="table for recipe details">
+          <tr>
+            <td>Cook time</td>
+            <td><%= recipe.cook_time %></td>
+          </tr>
+          <tr>
+            <td>Prep time</td>
+            <td><%= recipe.prep_time %></td>
+          </tr>
+          <tr>
+            <td>Ratings</td>
+            <td><%= recipe.ratings %></td>
+          </tr>
+          <tr>
+            <td>Author</td>
+            <td><%= recipe.author %></td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-4 border-start my-card-border-color card-body">
+        <ul aria-label="ingredient list">
+          <% recipe.ingredients.each do |ingredient| %>
+            <li><%= ingredient %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>
