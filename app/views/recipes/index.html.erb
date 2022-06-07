@@ -2,7 +2,7 @@
   <%= link_to "Upload new recipes", new_recipe_import_path, class: "btn btn-outline-primary" %>
 </h1>
 
-<%= form_with url: "/", method: :get, class: "mt-4" do |form| %>
+<%= form_with url: "/", method: :get, class: "mt-4 mb-4" do |form| %>
   <%#= form.label :query, "Search for:" %>
   <div class="input-group">
     <%= form.text_field :filter_by_ingredients, name: "filter_by_ingredients", class: "form-control", "aria-label": "ingredient filter input", describedby: "submit-filter" %>
