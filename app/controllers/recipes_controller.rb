@@ -11,8 +11,8 @@ class RecipesController < ApplicationController
   end
 
   def propose
-    recipes = Recipe.contains_ingredients(prepare_ingredient_filter)
-    @recipe = recipes[rand(1..recipes.size)]
+    recipe_count = Recipe.contains_ingredients(prepare_ingredient_filter).count
+    @recipe = Recipe.find(rand(0..recipe_count)).includes(:category)
 
     render "show"
   end
