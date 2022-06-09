@@ -36,6 +36,10 @@
           <td>Author</td>
           <td><%= @recipe.author %></td>
         </tr>
+        <tr>
+          <td>Category</td>
+          <td><%= @recipe.category.try(:name) %></td>
+        </tr>
       </table>
     </div>
   </div>
