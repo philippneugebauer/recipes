@@ -11,9 +11,6 @@ class RecipeImport < ApplicationRecord
     # https://iostreams.rocketjob.io/tutorial
     content = File.read(file)
 
-    # http://www.databasesoup.com/2015/01/tag-all-things-part-2.html
-    # https://www.netguru.com/blog/postgres-arrays-vs-json-datatypes-in-rails-5
-    # https://edgeguides.rubyonrails.org/active_record_postgresql.html#array
     #TODO: catch JSON::ParserError and save into recipe import entity?
     #TODO: complete transaction?
     records = JSON.parse(content).map { |r|

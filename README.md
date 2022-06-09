@@ -1,24 +1,47 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## User Stories
 
-Things you may want to cover:
+- import recipes through JSON upload
 
-* Ruby version
+- find recipes based on ingredients
 
-* System dependencies
+- get a recipe proposed based on ingredients
 
-* Configuration
+## Database Diagram
 
-* Database creation
+https://stackoverflow.com/questions/3223770/tools-to-generate-database-tables-diagram-with-postgresql
+https://schemaspy.org/
 
-* Database initialization
+## Application URL
 
-* How to run the test suite
+## Architecture Decisions
 
-* Services (job queues, cache servers, search engines, etc.)
+Ingredient data is not structured. There is quite some effort required to transform them into structured data.
+Helpers like https://github.com/rrgayhart/little-recipe-parser unfortunately need an overhaul to catch all cases.
+Therefore I decided to leave the data is it is. That meant for the first step also that I just keep the ingredient data inside of the recipe record in a jsonb column instead of separating it into another entity. If the JSON querying won't be fast enough, there will be another try with a separate entity and LIKE queries as the ingredient data is not structured and does not allow for simple select queries. Structured data would allow for automatic categorization e.g. based on diet requirements. Also not even every recipe has a category, around 60.
 
-* Deployment instructions
+# http://www.databasesoup.com/2015/01/tag-all-things-part-2.html
+# https://www.netguru.com/blog/postgres-arrays-vs-json-datatypes-in-rails-5
+# https://edgeguides.rubyonrails.org/active_record_postgresql.html#array
+# https://stackoverflow.com/questions/22667401/postgres-json-data-type-rails-query
+# http://www.binarywebpark.com/query-json-data-rails-postgresql/
+# https://blog.saeloun.com/2022/01/04/postgresql-data-types-in-rails.html
+# JSONB > ARRAY because like querying
 
-* ...
+Why has category its on database and ingredients don't? My assumption is that it's very likely that categories will be soon a n:n relation considering diets and other categorization ideas. That would be a heavy and avoidable migration. Furthermore, the category based on the current requirements is not an important information and it's so far a 1:n relation. Consequently, the JOIN overhead is small and cheap. Ingredients on the other hand are very connected to the recipe. You won't display all of them without the recipe but query them. They probably will be changed rarely, maybe for a typo but that's it. A jsonb column is proven to be small and fast, faster than a normalized additional table. So I have chosen to use the jsonb column.
+
+I have introduced sucker_punch for background jobs. This allows immediate user feedback after the upload so he doesn't need to wait for the file to be analyzed. That takes some substantial time and is annoying as a user. I've decided for sucker_punch because the file is stored on the disk so it won't be lost, even if the background job fails. The transactions ensure that either the import finishes successfully or fails completely. This allows for a simple reimport later even though this is not yet implemented. Furthermore, the in-memory and single-thread usage allows for the usage on the free tier of Heroku, where the application is supposed to be presented.
+
+I integrated React with Rails based on the esbuild and jsbundling-rails approach which seemed to me after research the most convenient and useful way at the moment, even though importmaps and DHH's approach might change that in future.
+
+ActiveStorage with local disk storage for simplicity of presentation and development. Normally, I would upload that to a S3 service like AWS, Wasabi etc.
+
+#Big file import with stream/lazing loading?
+
+#TODO: both server-side and react rendering?
+
+#TODO: test decisions => use generated tests for controllers => no effort
+since they are major points of presentation
+=> test json import
+=> test ingredient filtering
