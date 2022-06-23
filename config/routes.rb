@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  get 'react', to: 'react#index'
+  namespace :api do
+    namespace :v1 do
+      resources :recipes, only: [:index, :show]
+      get '/propose_recipe', to: 'recipes#propose'
+    end
+  end
   resources :recipe_imports, only: [:new, :index, :create]
-  get '/propose_recipe', to: 'recipes#propose'
-  resources :recipes, only: [:index, :show]
-  root "recipes#index"
+  #TODO: probably because root
+  root "react#index"
+  get '/*path' => 'react#index'
 end
