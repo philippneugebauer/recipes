@@ -45,3 +45,10 @@ ActiveStorage with local disk storage for simplicity of presentation and develop
 since they are major points of presentation
 => test json import
 => test ingredient filtering
+
+## Static Code Analyzer
+
+#TODO: code quality tools
+https://www.ruby-toolbox.com/categories/code_metrics
+https://securityguide.github.io/webapps/tools/ruby-tools/ruby-static-analysis.html
+https://www.fastruby.io/blog/ruby/quality/code-quality-ruby-gems.html

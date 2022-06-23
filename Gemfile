@@ -17,6 +17,16 @@ gem 'sucker_punch', '~> 3.0'
 
 gem 'jsbundling-rails'
 
+gem "brakeman"
+
+gem 'rubocop', require: false
+
+gem 'reek'
+
+gem 'rails_best_practices'
+
+gem "rubycritic", require: false
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
