@@ -42,7 +42,7 @@ const FilterForm = (props) => {
   return (
     <form onSubmit={submitHandler} className="mt-4 mb-1">
       <div className="input-group">
-        <input value={filterByIngredients} onChange={changeHandler} type="text" className="form-control" aria-label="ingredient filter input" describedby="submit-filter" />
+        <input value={filterByIngredients} onChange={changeHandler} type="text" className="form-control" name="filter_by_ingredients" aria-label="ingredient filter input" describedby="submit-filter" />
         <input type="submit" value="Propose Recipe" onClick={proposeSubmitHandler} className="btn btn-outline-primary" aria-label="Propose recipe based on filter" />
         <input type="submit" value="Reset" onClick={resetHandler} className="btn btn-outline-primary" aria-label="reset filter" />
         <input type="submit" value="Filter" id="submit-filter" className="btn btn-primary" aria-describedby="filter-help" />
