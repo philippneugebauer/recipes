@@ -1,24 +1,28 @@
-<h1> Recipe imports
-  <%= link_to "Upload new recipes", new_recipe_import_path, class: "btn btn-outline-primary" %>
-</h1>
+<div class="card p-3 mb-3">
+  <h1> Recipe imports
+    <%= link_to "Upload new recipes", new_recipe_import_path, class: "btn btn-outline-primary" %>
+  </h1>
+</div>
 
-<div class="table-responsive">
-  <table class="table table-hover" aria-label="table for recipe imports">
-    <thead>
-      <tr>
-        <th scope="col">Name</th>
-        <th scope="col">File</th>
-        <th scope="col">Uploaded At</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @recipe_imports.each do |recipe_import| %>
+<div class="card p-3">
+  <div class="table-responsive">
+    <table class="table table-hover" aria-label="table for recipe imports">
+      <thead>
         <tr>
-          <td><%= recipe_import.name %></td>
-          <td><%= link_to recipe_import.file.filename, recipe_import.file if recipe_import.file.attached? %></td>
-          <td><%= recipe_import.created_at %></td>
+          <th scope="col">Name</th>
+          <th scope="col">File</th>
+          <th scope="col">Uploaded At</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @recipe_imports.each do |recipe_import| %>
+          <tr>
+            <td><%= recipe_import.name %></td>
+            <td><%= link_to recipe_import.file.filename, recipe_import.file if recipe_import.file.attached? %></td>
+            <td><%= recipe_import.created_at %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
