@@ -10,7 +10,12 @@ const RecipeFilterForm = (props) => {
   const proposeSubmitHandler = (event) => {
     event.preventDefault();
 
-    return navigate(`/propose_recipe?filter_by_ingredients=${filterByIngredients}`);
+    let url = `/propose_recipe`
+
+    if (filterByIngredients)
+      url = `/propose_recipe?filter_by_ingredients=${filterByIngredients}`
+
+    return navigate(url);
   }
 
   const changeHandler = (event) => {

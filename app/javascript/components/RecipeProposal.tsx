@@ -7,7 +7,10 @@ const RecipeProposal = (props) => {
   const [urlParameters, setUrlParameters] = useSearchParams();
   const filterByIngredients = urlParameters.get("filter_by_ingredients")
 
-  const url = `/api/v1/propose_recipe.json?filter_by_ingredients=${filterByIngredients}`;
+  let url = `/api/v1/propose_recipe.json`
+
+  if (filterByIngredients)
+    url = `/api/v1/propose_recipe.json?filter_by_ingredients=${filterByIngredients}`
 
   const [recipe, setRecipe] = useState(null)
 
