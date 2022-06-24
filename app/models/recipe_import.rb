@@ -23,7 +23,7 @@ class RecipeImport < ApplicationRecord
       # unfortunately does not enfore active record validations
       Recipe.insert_all!(records)
 
-      recipe_import.update!(status: "Successfull")
+      recipe_import.update!(status: "Successful")
     rescue => e
       recipe_import.update!(status: e.inspect)
     end
