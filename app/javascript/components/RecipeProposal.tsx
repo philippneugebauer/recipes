@@ -5,9 +5,9 @@ import RecipeShow from "./RecipeShow"
 const RecipeProposal = (props) => {
 
   const [urlParameters, setUrlParameters] = useSearchParams();
-  const filterByIngredients =  urlParameters.get("filter_by_ingredients")
+  const filterByIngredients = urlParameters.get("filter_by_ingredients")
 
-  const url = `/api/v1/recipes/propose_recipe.json?filter_by_ingredients=${filterByIngredients}`;
+  const url = `/api/v1/propose_recipe.json?filter_by_ingredients=${filterByIngredients}`;
 
   const [recipe, setRecipe] = useState(null)
 

@@ -5,11 +5,12 @@ const RecipeFilterForm = (props) => {
 
   const [filterByIngredients, setFilterByIngredients] = useState('')
 
+  const navigate = useNavigate();
+
   const proposeSubmitHandler = (event) => {
     event.preventDefault();
 
-    const navigate = useNavigate();
-    return navigate('/propose_recipe?filter_by_ingredients=${filterByIngredients}');
+    return navigate(`/propose_recipe?filter_by_ingredients=${filterByIngredients}`);
   }
 
   const changeHandler = (event) => {
