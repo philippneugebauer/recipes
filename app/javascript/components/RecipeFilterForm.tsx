@@ -13,7 +13,7 @@ const RecipeFilterForm = (props) => {
     let url = `/propose_recipe`
 
     if (filterByIngredients)
-      url = `/propose_recipe?filter_by_ingredients=${filterByIngredients}`
+      url = `/propose_recipe?filter_by_ingredients=${encodeURIComponent(filterByIngredients)}`
 
     return navigate(url);
   }
