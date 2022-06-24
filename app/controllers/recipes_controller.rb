@@ -3,20 +3,12 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-    if params[:filter_by_ingredients]
-      @recipes = Recipe.contains_ingredients(prepare_ingredient_filter)
-    else
-      @recipes = Recipe.all
-    end
-    @recipes = @recipes.includes(:category).limit(50)
+    recipes = handle_ingredient_filter()
+    @recipes = recipes.includes(:category).limit(50)
   end
 
   def propose
-    if params[:filter_by_ingredients]
-      recipes = Recipe.contains_ingredients(prepare_ingredient_filter)
-    else
-      recipes = Recipe.all
-    end
+    recipes = handle_ingredient_filter()
     @recipe = recipes[rand(0..recipes.size - 1)]
 
     render "show"
@@ -30,6 +22,14 @@ class RecipesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_recipe
       @recipe = Recipe.find(params[:id])
+    end
+
+    def handle_ingredient_filter
+      if params[:filter_by_ingredients]
+        Recipe.contains_ingredients(prepare_ingredient_filter())
+      else
+        Recipe.all
+      end
     end
 
     def prepare_ingredient_filter
