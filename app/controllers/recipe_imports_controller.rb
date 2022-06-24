@@ -17,10 +17,8 @@ class RecipeImportsController < ApplicationController
     respond_to do |format|
       if @recipe_import.save
         RecipeImportJob.perform_async(@recipe_import)
-        format.html { redirect_to recipe_imports_url, notice: "Recipe import was successfully created." }
         format.json { render :show, status: :created, location: @recipe_import }
       else
-        format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @recipe_import.errors, status: :unprocessable_entity }
       end
     end
