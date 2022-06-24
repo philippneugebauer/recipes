@@ -48,7 +48,4 @@ since they are major points of presentation
 
 ## Static Code Analyzer
 
-#TODO: code quality tools
-https://www.ruby-toolbox.com/categories/code_metrics
-https://securityguide.github.io/webapps/tools/ruby-tools/ruby-static-analysis.html
-https://www.fastruby.io/blog/ruby/quality/code-quality-ruby-gems.html
+I have applied several code analyzers like brakeman security and rubocop. There's several findings mostly about Rails generated code about " and '. There's also the indication of a SQL injection vulnerability in `Recipe.contains_ingredients` but actually the `?` parameter application prevents that vulnerability. I even tested it with `Recipe.contains_ingredients(["corn%); DROP TABLE recipe_imports"])` and it didn't work.
