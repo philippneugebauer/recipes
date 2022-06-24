@@ -16,7 +16,6 @@ class RecipesController < ApplicationController
     else
       render json: {message: "No recipes found!"}, status: :not_found
     end
-
   end
 
   # GET /recipes/1 or /recipes/1.json
