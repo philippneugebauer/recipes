@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import RecipeShow from "./RecipeShow"
+import Details from "./Details"
 
-const RecipeProposal = (props) => {
+const Proposal = (props) => {
 
   const [urlParameters, setUrlParameters] = useSearchParams();
   const filterByIngredients = urlParameters.get("filter_by_ingredients")
@@ -31,8 +31,8 @@ const RecipeProposal = (props) => {
   if(recipe == null) {
     return
   } else {
-    return <><RecipeShow recipe={recipe}></RecipeShow></>
+    return <><Details recipe={recipe}></Details></>
   }
 }
 
-export default RecipeProposal;
+export default Proposal;

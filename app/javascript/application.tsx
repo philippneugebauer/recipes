@@ -12,7 +12,3 @@ document.addEventListener('DOMContentLoaded', () => {
   const root = ReactDOM.createRoot(rootEl)
   root.render(<App />)
 })
-
-//TODO: how is application.css generated? how to add entries?
-//TODO: rails like components subfolders for recipe and according naming of parts
-//TODO: react validation

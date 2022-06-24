@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 
-const RecipeImportNew = (props) => {
+const New = (props) => {
 
   const [name, setName] = useState('')
   const [file, setFile] = useState()
@@ -76,4 +76,4 @@ const RecipeImportNew = (props) => {
   )
 }
 
-export default RecipeImportNew;
+export default New;

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import RecipeShow from "./RecipeShow"
+import Details from "./Details"
 
-const Recipe = (props) => {
+const Show = (props) => {
 
   let { id } = useParams()
 
@@ -27,8 +27,8 @@ const Recipe = (props) => {
   if(recipe == null) {
     return
   } else {
-    return <><RecipeShow recipe={recipe}></RecipeShow></>
+    return <><Details recipe={recipe}></Details></>
   }
 }
 
-export default Recipe;
+export default Show;

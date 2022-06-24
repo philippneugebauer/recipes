@@ -1,6 +1,6 @@
 import React from "react";
 
-const RecipeImportIndexItem = (props) => (
+const IndexItem = (props) => (
   <>
     <tr key={props.recipeImport.id}>
       <td>{props.recipeImport.name}</td>
@@ -11,4 +11,4 @@ const RecipeImportIndexItem = (props) => (
   </>
 )
 
-export default RecipeImportIndexItem;
+export default IndexItem;

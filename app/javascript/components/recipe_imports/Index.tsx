@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import RecipeImportIndexItem from "./RecipeImportIndexItem"
+import IndexItem from "./IndexItem"
 
-const RecipeImportIndex = () => {
+const Index = () => {
 
   const [recipeImports, setRecipeImports] = useState([])
 
@@ -24,7 +24,7 @@ const RecipeImportIndex = () => {
   }, [])
 
   const allRecipeImports = recipeImports.map((recipeImport) => (
-    <RecipeImportIndexItem recipeImport={recipeImport}></RecipeImportIndexItem>
+    <IndexItem recipeImport={recipeImport}></IndexItem>
   ));
 
   return (
@@ -61,4 +61,4 @@ const RecipeImportIndex = () => {
   )
 }
 
-export default RecipeImportIndex;
+export default Index;

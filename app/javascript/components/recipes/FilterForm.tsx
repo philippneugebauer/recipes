@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const RecipeFilterForm = (props) => {
+const FilterForm = (props) => {
 
   const [filterByIngredients, setFilterByIngredients] = useState('')
 
@@ -52,4 +52,4 @@ const RecipeFilterForm = (props) => {
   )
 }
 
-export default RecipeFilterForm;
+export default FilterForm;

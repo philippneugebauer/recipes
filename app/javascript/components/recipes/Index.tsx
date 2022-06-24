@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import RecipeIndexItem from "./RecipeIndexItem"
-import RecipeFilterForm from "./RecipeFilterForm"
+import IndexItem from "./IndexItem"
+import FilterForm from "./FilterForm"
 
-const Recipes = () => {
+const Index = () => {
   const [recipes, setRecipes] = useState([])
 
   const [urlParameters, setUrlParameters] = useSearchParams();
@@ -30,7 +30,7 @@ const Recipes = () => {
   }, [])
 
   const allRecipes = recipes.map((recipe) => (
-    <RecipeIndexItem recipe={recipe}></RecipeIndexItem>
+    <IndexItem recipe={recipe}></IndexItem>
   ));
 
   return (
@@ -42,11 +42,11 @@ const Recipes = () => {
           </Link>
         </h1>
 
-        <RecipeFilterForm populateData={populateData}></RecipeFilterForm>
+        <FilterForm populateData={populateData}></FilterForm>
       </div>
 
       {allRecipes}
     </>
   )
 }
-export default Recipes;
+export default Index;

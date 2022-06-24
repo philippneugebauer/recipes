@@ -1,9 +1,9 @@
 import React from "react";
-import HeaderWithBack from "./HeaderWithBack"
+import HeaderWithBack from "../HeaderWithBack"
 import IngredientList from "./IngredientList"
-import RecipeDetails from "./RecipeDetails"
+import Details from "./Details"
 
-const RecipeShow = (props) => (
+const Show = (props) => (
   <>
     <HeaderWithBack title={props.recipe.title} link={`/`} linkText={"Back to recipes"}></HeaderWithBack>
 
@@ -22,7 +22,7 @@ const RecipeShow = (props) => (
                     <IngredientList ingredients={props.recipe.ingredients}></IngredientList>
                   </td>
                 </tr>
-                <RecipeDetails recipe={props.recipe}></RecipeDetails>
+                <Details recipe={props.recipe}></Details>
               </tbody>
             </table>
           </div>
@@ -32,4 +32,4 @@ const RecipeShow = (props) => (
   </>
 )
 
-export default RecipeShow;
+export default Show;

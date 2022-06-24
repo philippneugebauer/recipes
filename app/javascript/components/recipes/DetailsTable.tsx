@@ -1,6 +1,6 @@
 import React from "react";
 
-const RecipeDetails = (props: { recipe: any }) => (
+const DetailsTable = (props: { recipe: any }) => (
   <>
     <tr>
       <td>Cook time</td>
@@ -25,4 +25,4 @@ const RecipeDetails = (props: { recipe: any }) => (
   </>
 )
 
-export default RecipeDetails;
+export default DetailsTable;
