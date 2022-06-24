@@ -34,6 +34,9 @@ const RecipeImportIndex = () => {
           <Link to={`new`} className="ms-2 btn btn-outline-primary">
             Upload new recipes
           </Link>
+          <Link to={`/`} className="ms-2 btn btn-outline-secondary">
+            Back to recipes
+          </Link>
         </h1>
       </div>
 
