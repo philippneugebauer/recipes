@@ -36,14 +36,13 @@ const RecipeImportNew = (props) => {
     }
 
     fetch('/api/v1/recipe_imports.json', requestOptions)
-      .then(response => setResponse(response))
-
-    if (response.ok) {
-      //TODO: only happens after second button press => timeout/wait?
-      return navigate("/recipe_imports")
-    } else {
-      //TODO: display errors?
-    }
+      .then(response => {
+        if (response.ok) {
+          return navigate("/recipe_imports")
+        } else {
+          alert(response.statusText)
+        }
+      })
   }
 
   return (
@@ -56,12 +55,12 @@ const RecipeImportNew = (props) => {
         <form onSubmit={submitHandler}>
           <div className="mb-3">
             <label htmlFor="name" className="form-label">Name</label>
-            <input onChange={nameChangeHandler} value={name} type="text" className="form-control" id="name" name="name" />
+            <input onChange={nameChangeHandler} value={name} type="text" className="form-control" id="name" name="name" required />
           </div>
 
           <div className="mb-3">
             <label htmlFor="file" className="form-label">File</label>
-            <input onChange={fileChangeHandler} type="file" accept="application/JSON" className="form-control" id="file" name="file" aria-describedby="upload-help" />
+            <input onChange={fileChangeHandler} type="file" accept="application/JSON" className="form-control" id="file" name="file" aria-describedby="upload-help" required />
             <div id="upload-help" className="form-text">Must be a JSON file</div>
           </div>
 
