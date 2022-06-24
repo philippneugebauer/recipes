@@ -1,7 +1,7 @@
 class RecipeImport < ApplicationRecord
   has_one_attached :file
 
-  validates :name, presence: true
+  validates :name, :file, presence: true
 
   # RecipeImport.new().execute_import()
   def execute_import(file = "recipes-en.json")
