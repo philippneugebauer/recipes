@@ -46,6 +46,17 @@ since they are major points of presentation
 => test json import
 => test ingredient filtering
 
+#TODO: lazy/stream loading?
+# https://thoughtbot.com/blog/io-in-ruby
+# https://www.thegnar.com/blog/ruby-io-buffer
+# https://iostreams.rocketjob.io/tutorial
+content = File.read(file)
+
+#TODO: json validation? https://github.com/voxpupuli/json-schema
+#TODO: Ingredients als Text?
+  # => textfunktionalität von Postgres checken => Textsuche
+  # => performance
+
 ## Static Code Analyzer
 
 I have applied several code analyzers like brakeman security and rubocop. There's several findings mostly about Rails generated code about " and '. There's also the indication of a SQL injection vulnerability in `Recipe.contains_ingredients` but actually the `?` parameter application prevents that vulnerability. I even tested it with `Recipe.contains_ingredients(["corn%); DROP TABLE recipe_imports"])` and it didn't work.

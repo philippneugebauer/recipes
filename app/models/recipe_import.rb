@@ -5,16 +5,7 @@ class RecipeImport < ApplicationRecord
 
   # RecipeImport.new().execute_import()
   def execute_import(file = "recipes-en.json", recipe_import_id = 1)
-    #TODO: lazy/stream loading?
-    # https://thoughtbot.com/blog/io-in-ruby
-    # https://www.thegnar.com/blog/ruby-io-buffer
-    # https://iostreams.rocketjob.io/tutorial
     content = File.read(file)
-
-    #TODO: json validation? https://github.com/voxpupuli/json-schema
-    #TODO: Ingredients als Text?
-      # => textfunktionalität von Postgres checken => Textsuche
-      # => performance
 
     recipe_import = RecipeImport.find(recipe_import_id)
 
