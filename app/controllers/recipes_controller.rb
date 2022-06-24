@@ -4,20 +4,20 @@ class RecipesController < ApplicationController
   # GET /recipes or /recipes.json
   def index
     if params[:filter_by_ingredients]
-      @recipes = Recipe.contains_ingredients(prepare_ingredient_filter).includes(:category)
+      @recipes = Recipe.contains_ingredients(prepare_ingredient_filter)
     else
-      @recipes = Recipe.all.includes(:category)
+      @recipes = Recipe.all
     end
+    @recipes = @recipes.includes(:category).limit(50)
   end
 
   def propose
     if params[:filter_by_ingredients]
-      recipe_count = Recipe.contains_ingredients(prepare_ingredient_filter).count
-      @recipe = Recipe.contains_ingredients(prepare_ingredient_filter).find(rand(0..recipe_count))
+      recipes = Recipe.contains_ingredients(prepare_ingredient_filter)
     else
-      recipe_count = Recipe.count
-      @recipe = Recipe.find(rand(0..recipe_count))
+      recipes = Recipe.all
     end
+    @recipe = recipes[rand(0..recipes.size - 1)]
 
     render "show"
   end
