@@ -9,9 +9,13 @@ class RecipesController < ApplicationController
 
   def propose
     recipes = handle_ingredient_filter()
-    @recipe = recipes[rand(0..recipes.size - 1)]
+    if recipes.size > 0
+      @recipe = recipes[rand(0..recipes.size - 1)]
+      render "show"
+    else
+      render json: {message: "No recipes found!"}, status: :not_found
+    end
 
-    render "show"
   end
 
   # GET /recipes/1 or /recipes/1.json
