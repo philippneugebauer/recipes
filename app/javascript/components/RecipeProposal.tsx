@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import RecipeShow from "./RecipeShow"
 
-const Recipe = (props) => {
+const RecipeProposal = (props) => {
 
-  let { id } = useParams()
+  const [urlParameters, setUrlParameters] = useSearchParams();
+  const filterByIngredients =  urlParameters.get("filter_by_ingredients")
 
-  const url = `/api/v1/recipes/${id}.json`;
+  const url = `/api/v1/recipes/propose_recipe.json?filter_by_ingredients=${filterByIngredients}`;
 
   const [recipe, setRecipe] = useState(null)
 
@@ -31,4 +32,4 @@ const Recipe = (props) => {
   }
 }
 
-export default Recipe;
+export default RecipeProposal;
