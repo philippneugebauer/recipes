@@ -1,7 +1,7 @@
 import React from "react";
 import HeaderWithBack from "../HeaderWithBack"
 import IngredientList from "./IngredientList"
-import Details from "./Details"
+import DetailsTable from "./DetailsTable"
 
 const Show = (props) => (
   <>
@@ -22,7 +22,7 @@ const Show = (props) => (
                     <IngredientList ingredients={props.recipe.ingredients}></IngredientList>
                   </td>
                 </tr>
-                <Details recipe={props.recipe}></Details>
+                <DetailsTable recipe={props.recipe}></DetailsTable>
               </tbody>
             </table>
           </div>
