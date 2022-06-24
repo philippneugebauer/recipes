@@ -2,7 +2,7 @@ class RecipeImportsController < ApplicationController
 
   # GET /recipe_imports or /recipe_imports.json
   def index
-    @recipe_imports = RecipeImport.all
+    @recipe_imports = RecipeImport.order(created_at: :desc)
   end
 
   # GET /recipe_imports/new
@@ -17,7 +17,7 @@ class RecipeImportsController < ApplicationController
     respond_to do |format|
       if @recipe_import.save
         RecipeImportJob.perform_async(@recipe_import)
-        format.json { render :show, status: :created, location: @recipe_import }
+        format.json { render json: :ok, status: :created }
       else
         format.json { render json: @recipe_import.errors, status: :unprocessable_entity }
       end
@@ -27,6 +27,6 @@ class RecipeImportsController < ApplicationController
   private
     # Only allow a list of trusted parameters through.
     def recipe_import_params
-      params.require(:recipe_import).permit(:name, :file)
+      params.permit(:name, :file)
     end
 end
