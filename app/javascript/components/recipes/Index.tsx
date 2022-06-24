@@ -45,7 +45,11 @@ const Index = () => {
         <FilterForm populateData={populateData}></FilterForm>
       </div>
 
-      {allRecipes}
+      {allRecipes.length == 0 ?
+        <div class="alert alert-warning" role="alert">
+          No recipes found!
+        </div>
+        : allRecipes}
     </>
   )
 }
