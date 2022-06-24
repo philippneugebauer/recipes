@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import RecipeIndexItem from "./RecipeIndexItem"
 import RecipeFilterForm from "./RecipeFilterForm"
 
 const Recipes = () => {
-  //TODO: direct link with params should be possible
-  //TODO: propose and reset from filter form do not work
-
   const [recipes, setRecipes] = useState([])
+
+  const [urlParameters, setUrlParameters] = useSearchParams();
+  const filterByIngredients = urlParameters.get("filter_by_ingredients")
 
   const populateData = (props) => {
     let url = "/api/v1/recipes.json"
@@ -24,7 +24,9 @@ const Recipes = () => {
   }
 
   useEffect(() => {
-    populateData({})
+    let url = "/api/v1/recipes.json"
+    if (filterByIngredients) url = `/api/v1/recipes.json?filter_by_ingredients=${encodeURIComponent(filterByIngredients)}`
+    populateData({url: url})
   }, [])
 
   const allRecipes = recipes.map((recipe) => (
