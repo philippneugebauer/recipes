@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import Details from "./Details"
 
 const Proposal = (props) => {
@@ -14,12 +14,17 @@ const Proposal = (props) => {
 
   const [recipe, setRecipe] = useState(null)
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     async function fetchData() {
       fetch(url)
       .then(response => {
         if (response.ok) {
           return response.json();
+        } else if (response.status == 404) {
+          alert("No recipe found!")
+          return navigate("/")
         }
         throw new Error("Network response was not ok.");
       })
