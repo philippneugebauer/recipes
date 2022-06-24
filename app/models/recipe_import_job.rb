@@ -5,6 +5,6 @@ class RecipeImportJob
   # https://edgeguides.rubyonrails.org/active_storage_overview.html
   def perform(recipe_import)
     recipe_upload_file = ActiveStorage::Blob.service.path_for(recipe_import.file.key)
-    recipe_import.execute_import(recipe_upload_file)
+    recipe_import.execute_import(recipe_upload_file, recipe_import.id)
   end
 end

@@ -47,6 +47,7 @@ const RecipeImportIndex = () => {
               <tr>
                 <th scope="col">Name</th>
                 <th scope="col">File</th>
+                <th scope="col">Status</th>
                 <th scope="col">Uploaded At</th>
               </tr>
             </thead>
