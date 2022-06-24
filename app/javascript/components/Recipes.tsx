@@ -1,22 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import RecipeIndexItem from "./RecipeIndexItem"
+import RecipeFilterForm from "./RecipeFilterForm"
 
-class Recipes extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      recipes: [],
-      filter_by_ingredients: ""
-    };
+const Recipes = () => {
+  //TODO: direct link with params should be possible
+  //TODO: propose and reset from filter form do not work
 
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  const [recipes, setRecipes] = useState([])
 
-  componentDidMount() {
-    //TODO: allow url with filter params
-    const url = "/api/v1/recipes.json";
+  const populateData = (props) => {
+    let url = "/api/v1/recipes.json"
+    if (props.url) { url = props.url }
+
     fetch(url)
       .then(response => {
         if (response.ok) {
@@ -24,63 +20,31 @@ class Recipes extends React.Component {
         }
         throw new Error("Network response was not ok.");
       })
-      .then(response => this.setState({ recipes: response }))
-      .catch(() => this.props.history.push("/"));
+      .then(response => setRecipes(response))
   }
 
-  handleInputChange(event) {
-    this.setState({ [event.target.name]: event.target.value });
-  }
+  useEffect(() => {
+    populateData({})
+  }, [])
 
-  handleSubmit(event) {
-    event.preventDefault();
+  const allRecipes = recipes.map((recipe) => (
+    <RecipeIndexItem recipe={recipe}></RecipeIndexItem>
+  ));
 
-    const { filter_by_ingredients } = this.state;
-    const url = `/api/v1/recipes.json?filter_by_ingredients=${filter_by_ingredients}`;
-
-    if (filter_by_ingredients.length == 0)
-      return;
-
-    fetch(url, {
-      method: "GET"
-    }).then(response => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw new Error("Network response was not ok.");
-    }).then(response => this.setState({ recipes: response }))
-    .catch(error => console.log(error.message));
-  }
-
-  render() {
-    const { recipes } = this.state;
-    const allRecipes = recipes.map((recipe) => (
-      <RecipeIndexItem recipe={recipe}></RecipeIndexItem>
-    ));
-
-    return (
-      <>
+  return (
+    <>
+      <div className="card px-3 py-2 mb-3">
         <h1>Recipes
           <Link to={`/recipe_imports/new`} className="ms-2 btn btn-outline-primary" aria-label="title with link to recipe details">
             Upload new recipes
           </Link>
         </h1>
 
-        <form onSubmit={this.handleSubmit} className="mt-4 mb-4">
-          <div className="input-group">
-            <input value={this.state.filter_by_ingredients} onChange={this.handleInputChange} type="text" name="filter_by_ingredients" className="form-control" aria-label="ingredient filter input" describedby="submit-filter" />
-            <input type="submit" value="Propose Recipe" onSubmit={this.handleProposeSubmit} className="btn btn-outline-primary" aria-label="Propose recipe based on filter" />
-            <Link to={`/`} className="btn btn-outline-primary" aria-label="reset filter">
-              Reset
-            </Link>
-            <input type="submit" value="Filter" id="submit-filter" className="btn btn-primary" aria-describedby="filter-help" />
-          </div>
-          <div id="filter-help" className="form-text">Filter multiple necessary ingredients: "Corn, Flour"</div>
-        </form>
+        <RecipeFilterForm populateData={populateData}></RecipeFilterForm>
+      </div>
 
-        {allRecipes}
-      </>
-    );
-  }
+      {allRecipes}
+    </>
+  )
 }
 export default Recipes;
