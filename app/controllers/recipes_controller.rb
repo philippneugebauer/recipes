@@ -8,9 +8,10 @@ class RecipesController < ApplicationController
   end
 
   def propose
-    recipes = handle_ingredient_filter()
-    if recipes.size > 0
-      @recipe = recipes[rand(0..recipes.size - 1)]
+    recipes = handle_ingredient_filter().count
+    if recipes > 0
+      draw = rand(0..recipes.size - 1)
+      @recipe = handle_ingredient_filter()[draw]
       render "show"
     else
       render json: {message: "No recipes found!"}, status: :not_found
