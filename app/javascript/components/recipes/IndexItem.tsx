@@ -8,7 +8,7 @@ const IndexItem = (props) => (
     <div key={props.recipe.id} className="card mb-3">
       <div className="row g-0">
         <div className="col-md-4 card-body">
-          <img src={props.recipe.image_url} className="rounded float-end" style={{ height: 200 + 'px' }} alt={`Cooked ${props.recipe.title}`}></img>
+          <img src={props.recipe.image_thumbnail} className="rounded float-end" alt={`Cooked ${props.recipe.title}`}></img>
           <div className="card-img-overlay">
             <h2 className="card-title h5">
               <Link to={`/recipes/${props.recipe.id}`} aria-label="title with link to recipe details">

@@ -10,7 +10,7 @@ const Show = (props) => (
     <div className="card">
       <div className="row">
         <div className="col-6">
-          <img src={props.recipe.image_url} className="img-fluid rounded-start" alt={`Cooked ${props.recipe.title}`}></img>
+          <img src={props.recipe.image} className="img-fluid rounded-start" alt={`Cooked ${props.recipe.title}`}></img>
         </div>
         <div className="col-6">
           <div className="table-responsive">

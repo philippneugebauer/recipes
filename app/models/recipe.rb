@@ -2,7 +2,8 @@ class Recipe < ApplicationRecord
   validates :title, :ingredients, presence: true
   validates :cook_time, :prep_time, numericality: { only_integer: true }
   validates :ratings, numericality: true
-  validate :valid_image_url
+
+  has_one_attached :image
 
   belongs_to :category, optional: true
 
@@ -13,7 +14,11 @@ class Recipe < ApplicationRecord
     where(query_text, *query_parameter)
   }
 
-  def valid_image_url
-    errors.add(:image_url, "must be a valid url") unless (URI.parse image_url rescue nil)
+  def thumbnail
+    image.variant(resize_to_fill: [200, 200])
+  end
+
+  def full_image
+    image.variant(resize_to_fill: [1000, 800])
   end
 end

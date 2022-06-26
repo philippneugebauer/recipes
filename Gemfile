@@ -23,6 +23,8 @@ gem 'rubocop', require: false
 
 gem 'reek'
 
+gem 'image_processing', '~> 1.2'
+
 gem 'rails_best_practices'
 
 gem "rubycritic", require: false
