@@ -8,5 +8,9 @@ Rails.application.routes.draw do
   end
   # react
   root "react#index"
-  get '/*path' => 'react#index'
+  get '/recipes' => 'react#index'
+  get '/recipes/:id' => 'react#index'
+  get '/recipe_imports' => 'react#index'
+  get '/recipe_imports/new' => 'react#index'
+  get '/propose_recipe' => 'react#index'
 end

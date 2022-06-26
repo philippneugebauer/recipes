@@ -43,8 +43,6 @@ class RecipeImport < ApplicationRecord
   end
 
   def download_image(id, image_path)
-    #TODO: relation to recipe_imports?
-
     recipe = Recipe.find(id)
 
     file_name = recipe.image_url.split('%2F').last
