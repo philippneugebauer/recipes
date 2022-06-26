@@ -42,9 +42,13 @@ const FilterForm = (props) => {
   return (
     <form onSubmit={submitHandler} className="mt-4 mb-1">
       <div className="input-group">
-        <input value={filterByIngredients} onChange={changeHandler} type="text" className="form-control" name="filter_by_ingredients" aria-label="ingredient filter input" describedby="submit-filter" />
-        <input type="submit" value="Propose Recipe" onClick={proposeSubmitHandler} className="btn btn-outline-primary" aria-label="Propose recipe based on filter" />
-        <input type="submit" value="Reset" onClick={resetHandler} className="btn btn-outline-primary" aria-label="reset filter" />
+        <input value={filterByIngredients} onChange={changeHandler} type="text" className="form-control border-end-0" name="filter_by_ingredients" aria-label="ingredient filter input" describedby="submit-filter" />
+        <div className="d-flex align-items-center border-top border-bottom input-border-color pe-2" role="button" onClick={resetHandler} aria-label="reset filter">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="text-danger bi bi-x-lg" viewBox="0 0 16 16">
+            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+          </svg>
+        </div>
+        <input type="submit" value="Propose" onClick={proposeSubmitHandler} className="btn btn-outline-primary" aria-label="Propose recipe based on filter" />
         <input type="submit" value="Filter" id="submit-filter" className="btn btn-primary" aria-describedby="filter-help" />
       </div>
       <div id="filter-help" className="form-text">Filter multiple necessary ingredients: e.g., "Corn, Flour"</div>
