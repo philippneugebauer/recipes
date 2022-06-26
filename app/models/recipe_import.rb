@@ -45,7 +45,12 @@ class RecipeImport < ApplicationRecord
   def download_image(id, image_path)
     recipe = Recipe.find(id)
 
-    file_name = recipe.image_url.split('%2F').last
+    file_name = ''
+    if recipe.image_url.include?('%2F')
+      file_name = recipe.image_url.split('%2F').last
+    else
+      file_name = recipe.image_url.split('/').last
+    end
 
     file_path = "#{image_path}/#{file_name}"
 
