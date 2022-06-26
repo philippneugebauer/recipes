@@ -10,7 +10,7 @@ class RecipesController < ApplicationController
   def propose
     recipes = handle_ingredient_filter().count
     if recipes > 0
-      draw = rand(0..recipes.size - 1)
+      draw = rand(0..recipes - 1)
       @recipe = handle_ingredient_filter()[draw]
       render "show"
     else
