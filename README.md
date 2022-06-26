@@ -37,6 +37,10 @@ I integrated React with Rails based on the esbuild and jsbundling-rails approach
 
 ActiveStorage with local disk storage for simplicity of presentation and development. Normally, I would upload that to a S3 service like AWS, Wasabi etc.
 
+## Image Preprocessing
+
+=> we should have an image preprocessing that allows the creation of thumbnails and serving with optimized settings
+
 #Big file import with stream/lazing loading?
 
 #TODO: both server-side and react rendering?
