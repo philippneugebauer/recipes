@@ -17,7 +17,7 @@ COPY package.json /recipes/package.json
 COPY yarn.lock /recipes/yarn.lock
 RUN yarn
 
-RUN rails assets:precompile
+RUN rake assets:precompile
 
 COPY --chown=daemon . /recipes
 
