@@ -7,12 +7,6 @@ class RecipeImport < ApplicationRecord
   def execute_import(file = "recipes-en.json", recipe_import_id = 1)
     content = File.read(file)
 
-    image_save_path = "images/#{recipe_import_id}"
-
-    unless File.directory?(image_save_path)
-      FileUtils.mkdir_p(image_save_path)
-    end
-
     recipe_import = RecipeImport.find(recipe_import_id)
 
     result = []
@@ -36,23 +30,20 @@ class RecipeImport < ApplicationRecord
     rescue => e
       recipe_import.update!(status: e.inspect)
     end
+  end
 
-    result.rows.each do |id|
-      download_image(id.first, image_save_path)
+  def download_images
+    #TODO: another job that selects all recipes without image attachment => no problems with errors in run
+    recipes_without_images = Recipe.left_joins(:image_attachment).where(active_storage_attachments: { id: nil })
+    recipes_without_images.each do |recipe|
+      download_image(recipe, image_save_path)
     end
   end
 
-  def download_image(id, image_path)
-    recipe = Recipe.find(id)
+  private
 
-    file_name = ''
-    if recipe.image_url.include?('%2F')
-      file_name = recipe.image_url.split('%2F').last
-    else
-      file_name = recipe.image_url.split('/').last
-    end
-
-    file_path = "#{image_path}/#{file_name}"
+  def download_image(recipe, image_path)
+    file_path = "images/#{recipe.id}_#{file_name}"
 
     system("wget -O #{file_path} #{recipe.image_url}")
 
