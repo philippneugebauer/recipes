@@ -17,9 +17,9 @@ COPY package.json /recipes/package.json
 COPY yarn.lock /recipes/yarn.lock
 RUN yarn
 
-RUN bundle exec rails assets:precompile
-
 COPY --chown=daemon . /recipes
+
+RUN rails assets:precompile
 
 EXPOSE 3000
 
