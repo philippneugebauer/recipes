@@ -8,6 +8,7 @@ default: &default
   adapter: postgresql
   encoding: unicode
   database: recipes_dev
+  host: <%= ENV.fetch("DB_HOST") { "localhost" } %>
   username: <%= ENV.fetch("DB_USER") { "ppn" } %>
   password: <%= ENV.fetch("DB_PW") { "" } %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
