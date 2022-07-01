@@ -32,7 +32,8 @@
 /public/assets
 
 # Ignore master key for decrypting credentials and more.
-/config/master.key
+# couldn't find another solution for heroku with docker as heroku envs are not available during build step
+#/config/master.key
 
 .DS_Store
 
