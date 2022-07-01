@@ -13,11 +13,12 @@ COPY Gemfile.lock /recipes/Gemfile.lock
 RUN bundle install
 
 COPY package.json /recipes/package.json
+COPY yarn.lock /recipes/yarn.lock
 RUN yarn
 
 RUN rails assets:precompile
 
-COPY . /recipes
+COPY --chown=daemon . /recipes
 
 EXPOSE 3000
 
