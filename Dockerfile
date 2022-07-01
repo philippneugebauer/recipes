@@ -15,6 +15,8 @@ RUN bundle install
 COPY package.json /recipes/package.json
 RUN yarn
 
+RUN rails assets:precompile
+
 COPY . /recipes
 
 EXPOSE 3000
