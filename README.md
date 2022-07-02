@@ -41,7 +41,7 @@ Despite the fact, that it is not advisable to upload the master key into source 
 
 ## Image Preprocessing
 
-Google Lighthouse detected lots of performance optimizations, especially about the image delivery. They are all quite big (>1024x800 px) which is not needed in this application. Therefore, I implemented another mechanism to download the images and to resize them based on the requirements of the different pages. Unfortunately, the Postgres column limitation of 10,000 of the free tier in Heroku prevent this solution to be applied there. The application fails back then to image_url provided by the json of there is no uploaded image. Still, the implemented solution executed partially on Heroku solved the image delivery critique of Lighthouse.
+Google Lighthouse detected lots of performance optimizations, especially about the image delivery. They are all quite big (>1024x800 px) which is not needed in this application. Therefore, I implemented another mechanism to download the images and to resize them based on the requirements of the different pages. Unfortunately, the Postgres column limitation of 10,000 of the free tier in Heroku prevent this solution to be applied there. The application falls back then to image_url provided by the json of there is no uploaded image. Still, the implemented solution executed partially on Heroku solved the image delivery critique of Lighthouse. Since it's not usuable on Heroku, the current solution is very basic and needs further work for production usage, like daily/hourly scheduled calls, timeouts and non processing and manual reviews of process crashing pictures which all was left out due to the size of the work scope.
 
 ## No Pagination
 

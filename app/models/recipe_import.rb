@@ -34,6 +34,7 @@ class RecipeImport < ApplicationRecord
     # download_images()
   end
 
+  # trigger with scheduler
   def download_images
     begin
       recipes_without_images = Recipe.left_joins(:image_attachment).where(active_storage_attachments: { id: nil })
@@ -58,6 +59,7 @@ class RecipeImport < ApplicationRecord
 
       file_path = "images/#{recipe.id}_#{file_name}"
 
+      #https://www.johnnunemaker.com/limit-everything-timeouts-for-commands-in-ruby/
       system("wget -O #{file_path} #{recipe.image_url}")
 
       recipe.image.attach(io: File.open(file_path), filename: file_name)
