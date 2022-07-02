@@ -23,11 +23,9 @@ RUN yarn
 
 COPY --chown=daemon . /recipes
 
-RUN rails assets:precompile
-
 EXPOSE 3000
 
 USER daemon
 
-# Configure the main process to run when running the image
+RUN chmod +x docker_start.sh
 CMD ["rails", "server", "-b", "0.0.0.0"]
