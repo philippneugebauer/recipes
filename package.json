@@ -2,7 +2,7 @@
   "name": "app",
   "private": "true",
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
+    "build": "esbuild app/javascript/*.* --minify --bundle --sourcemap --outdir=app/assets/builds",
     "check-types": "tsc --project tsconfig.json --noEmit --watch --preserveWatchOutput"
   },
   "dependencies": {
