@@ -37,7 +37,7 @@ ActiveStorage with local disk storage for simplicity of presentation and develop
 
 ## Master Key
 
-Despite the fact, that it is not advisable to upload the master key into source control, that is the only way I could find to deploy the application to Heroku. Heroku envs cannot be used for the build step, but `rails assets:precompile` needs the env. It might be possible to move that in a startup script executed at application startup where the envs should be available.
+It is not advisable to upload the master key into source control, but `rails assets:precompile` needs it. The only way without uploading I found is putting the precompile step into the startup script since then the env set with Heroku are available. There's unfortunately no way they are provided at build time as well.
 
 ## Image Preprocessing
 
