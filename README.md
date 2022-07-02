@@ -47,11 +47,21 @@ Google Lighthouse detected lots of performance optimizations, especially about t
 
 Google and other search machines as well as general UX opinion indicates that most people don't search for all entries, so I decided to limit all results to 50 to prevent performance problems due to the picture loading.
 
+## Site Checkers
+
+### Accessibility Checker
+
+The application scores 95. The detailed result can be found [here](https://www.accessibilitychecker.org/audit/?website=https%3A%2F%2Fstormy-citadel-28410.herokuapp.com&flag=ge).
+
+### Google Lighthouse
+
+The application scores 67 for performance, with heaviest issues related to the big images, 100 for accessibility, 92 for best practices and 82 for SEO. Detailed results can be found [here](https://github.com/philippneugebauer/recipes/blob/master/docs/lighthouse.pdf).
+
 ## Tests
 
 I've decided to only test the major points of the application as it's a prototype. Therefore, I tested the json import and the full index as well as filtering for recipes with `bacon` as input.
 
-## JSON Processing/File loading
+## JSON Processing and File Loading
 
 While the provided file is fine to be processed at once, that might change for bigger files. Using stream loading could be an option for that ([1](https://thoughtbot.com/blog/io-in-ruby), [2](https://www.thegnar.com/blog/ruby-io-buffer), [3](https://iostreams.rocketjob.io/tutorial)).
 
