@@ -28,4 +28,4 @@ EXPOSE 3000
 USER daemon
 
 RUN chmod +x docker_start.sh
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["bash", "/recipes/docker_start.sh"]
