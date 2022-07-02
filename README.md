@@ -55,7 +55,7 @@ The application scores 95. The detailed result can be found [here](https://www.a
 
 ### Google Lighthouse
 
-The application scores 67 for performance, with heaviest issues related to the big images, 100 for accessibility, 92 for best practices and 82 for SEO. Detailed results can be found [here](https://github.com/philippneugebauer/recipes/blob/master/docs/lighthouse.pdf).
+The application scores 72 for performance, with heaviest issues related to the big images, 100 for accessibility, 100 for best practices and 82 for SEO. Detailed results can be found [here](https://github.com/philippneugebauer/recipes/blob/master/docs/lighthouse.pdf).
 
 ## Tests
 
