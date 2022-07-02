@@ -43,7 +43,7 @@ const FilterForm = (props) => {
     <form onSubmit={submitHandler} className="mt-4 mb-1">
       <div className="input-group">
         <input value={filterByIngredients} onChange={changeHandler} type="text" className="form-control border-end-0" name="filter_by_ingredients" aria-label="ingredient filter input" describedby="submit-filter" />
-        <div className="d-flex align-items-center border-top border-bottom input-border-color pe-2" role="button" onClick={resetHandler} aria-label="reset filter">
+        <div className="d-flex align-items-center border-top border-bottom icon-button__border-color pe-2" role="button" onClick={resetHandler} aria-label="reset filter">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="text-danger bi bi-x-lg" viewBox="0 0 16 16">
             <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
           </svg>

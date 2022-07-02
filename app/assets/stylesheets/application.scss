@@ -15,6 +15,10 @@
  */
  @import "bootstrap";
 
- .input-border-color {
+ .icon-button__border-color {
    border-color: #ced4da !important;
+ }
+
+ .recipe-index__item--image {
+   height: 200px;
  }
