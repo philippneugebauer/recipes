@@ -1,0 +1,8 @@
+ar_internal_metadata
+categories
+active_storage_blobs
+active_storage_attachments
+active_storage_variant_records
+recipes
+recipe_imports
+schema_migrations
