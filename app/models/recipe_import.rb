@@ -31,7 +31,7 @@ class RecipeImport < ApplicationRecord
       recipe_import.update!(status: e.inspect)
     end
     # deactivated due to Heroku column limits
-    download_images()
+    # download_images()
   end
 
   def download_images
