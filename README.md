@@ -20,7 +20,7 @@ docker run -v "$PWD/schemaspy:/output" -v "$PWD/schemaspy.properties:/schemaspy.
 
 The hosted application on Heroku can be found [here](https://stormy-citadel-28410.herokuapp.com/). Unfortunately, I encountered several limitations considering the free tier of Heroku. The provided JSON has more then 10,000 recipes which makes the database read-only. It also prevents downloading and providing the images within the application since that's also another database record.
 
-## Architecture Decisions
+## Architectural Decisions
 
 I decided to leave the ingredient data unstructured. There is more effort required as I initally expected to transform them into structured data. Helpers like https://github.com/rrgayhart/little-recipe-parser need an extensive overhaul to catch all cases.
 While I experimented in the beginning to separate the indications of measurement from the ingredients, I decided to revert that and move the ingredient data back inside a jsonb column of the recipe record instead of separating it into another entity. The JSON querying is fast enough to prevent blocking the application so there was no other try needed to overcome potential performance problems. I also tried out Postgres arrays but I couldn't find a way to allow like queries within them to filter for the ingredients. My research ([1](http://www.databasesoup.com/2015/01/tag-all-things-part-2.html), [2](https://www.netguru.com/blog/postgres-arrays-vs-json-datatypes-in-rails-5), [3](http://www.binarywebpark.com/query-json-data-rails-postgresql/)) also indicated that the performance difference between jsonb and arrays is neglectable.
@@ -33,13 +33,13 @@ I integrated React with Rails based on the esbuild and jsbundling-rails approach
 
 ActiveStorage with local disk storage for simplicity of presentation and development. For a production application, I would suggest S3 providers like AWS or Wasabi.
 
-## Master key
+## Master Key
 
 Despite the fact, that it is not advisable to upload the master key into source control, that is the only way I could find to deploy the application to Heroku. Heroku envs cannot be used for the build step, but `rails assets:precompile` needs the env. It might be possible to move that in a startup script executed at application startup where the envs should be available.
 
 ## Image Preprocessing
 
-Google Lighthouse detected lots of performance optimizations, especially about the image delivery. They are all quite big (>1024x800 px) which is not needed in this application. Therefore, I implemented another mechanism to download the images and to resize them based on the requirements of the different pages. Unfortunately, the Postgres column limitation of 10,000 of the free tier in Heroku prevent this solution to be applied there. Still, the implemented solution executed partially on Heroku solved the image delivery critique of Lighthouse.
+Google Lighthouse detected lots of performance optimizations, especially about the image delivery. They are all quite big (>1024x800 px) which is not needed in this application. Therefore, I implemented another mechanism to download the images and to resize them based on the requirements of the different pages. Unfortunately, the Postgres column limitation of 10,000 of the free tier in Heroku prevent this solution to be applied there. The application fails back then to image_url provided by the json of there is no uploaded image. Still, the implemented solution executed partially on Heroku solved the image delivery critique of Lighthouse.
 
 ## No Pagination
 
