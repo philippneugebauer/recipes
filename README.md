@@ -10,7 +10,9 @@ As a user, I want to get proposed a recipe based on my ingredients so that I don
 
 ## Database Diagram
 
-The database diagrams can be found under `./schemaspy` and were created with [Schemaspy](https://schemaspy.org/).
+The database diagram html can be found in the [index.html](https://github.com/philippneugebauer/recipes/blob/master/schemaspy/index.html) under `./schemaspy` and were created with [Schemaspy](https://schemaspy.org/). It must be checked out to watched in the browser.
+
+Here can be found the [relationships](https://github.com/philippneugebauer/recipes/blob/master/schemaspy/diagrams/summary/relationships.real.large.png) and [orphan](https://github.com/philippneugebauer/recipes/tree/master/schemaspy/diagrams/orphans) diagrams.
 
 ```
 docker run -v "$PWD/schemaspy:/output" -v "$PWD/schemaspy.properties:/schemaspy.properties" schemaspy/schemaspy
