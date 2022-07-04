@@ -3,7 +3,7 @@ import HeaderWithBack from "../HeaderWithBack"
 import IngredientList from "./IngredientList"
 import DetailsTable from "./DetailsTable"
 
-const Show = (props) => (
+const Details = (props) => (
   <>
     <HeaderWithBack title={props.recipe.title} link={`/`} linkText={"Back to recipes"}></HeaderWithBack>
 
@@ -32,4 +32,4 @@ const Show = (props) => (
   </>
 )
 
-export default Show;
+export default Details;
