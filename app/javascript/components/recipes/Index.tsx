@@ -30,7 +30,7 @@ const Index = () => {
   }, [])
 
   const allRecipes = recipes.map((recipe) => (
-    <IndexItem recipe={recipe}></IndexItem>
+    <IndexItem key={recipe.id} recipe={recipe}></IndexItem>
   ));
 
   return (

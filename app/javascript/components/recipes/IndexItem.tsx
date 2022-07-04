@@ -7,7 +7,7 @@ const IndexItem = (props) => {
   const image = props.recipe.image_thumbnail != null ? props.recipe.image_thumbnail : props.recipe.image_url
   return (
     <>
-      <div key={props.recipe.id} className="card mb-3">
+      <div className="card mb-3">
         <div className="row g-0">
           <div className="col-md-4 card-body">
             <img src={image} className="rounded float-end recipe-index__item--image" alt={`Cooked ${props.recipe.title}`}></img>
