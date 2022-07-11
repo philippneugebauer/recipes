@@ -33,7 +33,7 @@ I have introduced sucker_punch for background jobs. This allows immediate user f
 
 I integrated React with Rails based on the esbuild and jsbundling-rails approach which seemed to me based on my research the most convenient and useful way at the moment, even though importmaps and DHH's approach might change that in future.
 
-ActiveStorage with local disk storage for simplicity of presentation and development. For a production application, I would suggest S3 providers like AWS or Wasabi.
+ActiveStorage is used with local disk storage for simplicity of presentation and development. For a production application, I would suggest S3 providers like AWS or Wasabi.
 
 ## Master Key
 
