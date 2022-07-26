@@ -70,3 +70,11 @@ Currently, the application will just fail for a non-compliant json file. This wo
 ## Static Code Analyzer
 
 I have applied several code analyzers like brakeman security and rubocop. There's several findings mostly about Rails generated code about " and '. There's also the indication of a SQL injection vulnerability in `Recipe.contains_ingredients` but actually the `?` parameter application prevents that vulnerability. I even tested it with `Recipe.contains_ingredients(["corn%); DROP TABLE recipe_imports"])` and the injection was prevented and didn't delete the table.
+
+### Execute locally
+
+```
+bundle install
+yarn install
+./bin/dev
+```
